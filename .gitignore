@@ -1,1 +1,5 @@
 /InfotrackSearch/.vs/InfotrackSearch/v16/.suo
+/InfotrackSearch/Application/obj
+/InfotrackSearch/Application/bin/Debug/netcoreapp3.1
+/InfotrackSearch/Domain/bin/Debug/netcoreapp3.1
+/InfotrackSearch/Domain/obj
