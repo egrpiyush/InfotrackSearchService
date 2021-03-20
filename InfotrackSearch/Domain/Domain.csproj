@@ -6,8 +6,4 @@
     <AssemblyName>InfotrackSearchService.Domain</AssemblyName>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Entities\" />
-  </ItemGroup>
-
 </Project>

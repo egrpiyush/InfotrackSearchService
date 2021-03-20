@@ -4,3 +4,5 @@
 /InfotrackSearch/Domain/bin/Debug/netcoreapp3.1
 /InfotrackSearch/Domain/obj
 *.suo
+/InfotrackSearch/Application.Tests/obj
+/InfotrackSearch/Presentation.WebAPI/obj
