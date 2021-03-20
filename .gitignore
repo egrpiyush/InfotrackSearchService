@@ -3,3 +3,4 @@
 /InfotrackSearch/Application/bin/Debug/netcoreapp3.1
 /InfotrackSearch/Domain/bin/Debug/netcoreapp3.1
 /InfotrackSearch/Domain/obj
+*.suo

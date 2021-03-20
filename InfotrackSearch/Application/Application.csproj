@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>InfotrackSearch.Application</AssemblyName>
+    <AssemblyName>InfotrackSearchService.Application</AssemblyName>
   </PropertyGroup>
 
 </Project>
