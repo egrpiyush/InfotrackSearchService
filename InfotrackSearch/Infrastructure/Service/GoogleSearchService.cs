@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Queries.GetSearchResult
+namespace Infrastructure
 {
-    public class GetSearchResultQuery
+    public class GoogleSearchService
     {
     }
 }

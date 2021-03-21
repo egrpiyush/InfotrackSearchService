@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Application.Interface;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -6,10 +7,10 @@ using System.Text;
 
 namespace Infrastructure
 {
-    public class StaticSearch
+    public class StaticSearchService: IStaticSearchService
     {
         private readonly IConfiguration _configuration;
-        public StaticSearch(IConfiguration configuration)
+        public StaticSearchService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -17,7 +18,7 @@ namespace Infrastructure
         public string Search(string url)
         {
             WebClient webClient = new WebClient();
-            webClient.Headers.Add("user-agent", "Infotrach search");
+            webClient.Headers.Add("user-agent", "Infotrack search");
             return webClient.DownloadString(url);
         }
     }

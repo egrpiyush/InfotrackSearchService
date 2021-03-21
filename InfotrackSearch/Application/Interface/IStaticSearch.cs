@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Application.Interface
 {
-    public interface IGoogleSearch
+    public interface IStaticSearch
     {
-        SearchResultViewModel Search(string searchQuery);
+        List<int> Search(string searchQuery);
     }
 }

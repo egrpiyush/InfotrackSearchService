@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure
+namespace Infrastructure.Service
 {
-    class GoogleSearch
+    public class BingSearchService
     {
     }
 }

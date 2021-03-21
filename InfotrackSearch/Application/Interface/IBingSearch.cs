@@ -1,4 +1,4 @@
-﻿using Application.Queries.GetSearchResult;
+﻿using Application.Queries.GetStaticSearchResult;
 using System;
 using System.Collections.Generic;
 using System.Text;

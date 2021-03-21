@@ -1,3 +1,7 @@
+using Application;
+using Application.BusinessLogic;
+using Application.Interface;
+using Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,7 +29,10 @@ namespace Presentation.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IStaticSearch, StaticSearch>();
+            services.AddScoped<IStaticSearchService, StaticSearchService>();
             services.AddControllers();
+            services.AddApplicationLayer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
