@@ -13,6 +13,7 @@ namespace Application.Queries.GetStaticSearchResult
     {
         public string SearchTerm { get; set; }
         public string SearchUrl { get; set; }
+        public string UrlOfInterest { get; set; }
 
         public class Handler : IRequestHandler<GetStaticSearchResultQuery, SearchResponse>
         {
@@ -21,10 +22,13 @@ namespace Application.Queries.GetStaticSearchResult
             {
                 _staticSearch = staticSearch;
             }
+
             public async Task<SearchResponse> Handle(GetStaticSearchResultQuery request, CancellationToken cancellationToken)
             {
                 var response = new SearchResponse();
-                var result = _staticSearch.Search(request.SearchTerm);
+                var result = _staticSearch.Search(request.SearchTerm, request.UrlOfInterest);
+                if (result == null || !result.Any())
+                    return response;
                 response.FoundAt = string.Join(",", result);
                 response.IsSignificant = result.Max() <= 50 ? true : false;
                 return response;

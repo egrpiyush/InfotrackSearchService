@@ -7,6 +7,6 @@ namespace Application.Interface
 {
     public interface IStaticSearch
     {
-        List<int> Search(string searchQuery);
+        List<int> Search(string searchQuery, string urlOfInterest);
     }
 }

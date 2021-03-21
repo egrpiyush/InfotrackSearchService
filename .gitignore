@@ -11,3 +11,6 @@
 /InfotrackSearch/Infrastructure/bin/Debug/netcoreapp3.1
 /InfotrackSearch/Infrastructure/obj
 /InfotrackSearch/.vs/InfotrackSearchService/config
+/InfotrackSearch/Infrastructure.Tests/bin/Debug/netcoreapp3.1
+/InfotrackSearch/Infrastructure.Tests/obj
+/InfotrackSearch/.vs/InfotrackSearchService/v16/TestStore/0

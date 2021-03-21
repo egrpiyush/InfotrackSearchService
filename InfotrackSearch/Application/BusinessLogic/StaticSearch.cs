@@ -18,15 +18,16 @@ namespace Application.BusinessLogic
             searchDictionary = new Dictionary<int, SearchResultViewModel>();
         }
 
-        public List<int> Search(string searchQuery)
+        public List<int> Search(string searchQuery, string urlOfInterest)
         {
             var keyCount = 1;
             for (int i = 1; i <= 10; i++)
             {
                 var pageNumber = (i < 10) ? "0" + i : i.ToString();
                 var result = _service.Search(string.Format(@"https://infotrack-tests.infotrack.com.au/Google/Page{0}.html", pageNumber));
-                if (!string.IsNullOrWhiteSpace(result))
-                    ParseHtml(result.Replace('"', '#'), searchQuery, ref keyCount);
+                if (string.IsNullOrWhiteSpace(result))
+                    break;
+                ParseHtml(result.Replace('"', '#'), searchQuery, urlOfInterest, ref keyCount);
             }
 
             var filteredSearchResult = searchDictionary.Where(p => p.Value.IsInfotrack);
@@ -38,10 +39,10 @@ namespace Application.BusinessLogic
             return retVal;
         }
 
-        private void ParseHtml(string html, string searchQuery, ref int keyCount)
+        private void ParseHtml(string html, string searchQuery, string urlOfInterest, ref int keyCount)
         {
             var matches = Regex.Matches(html, @"(<li class=#ads-fr# data-bg=#1#>(.+?)<\/li>|<!--m-->(.+?)<!--n-->)");
-            var pattern = @"https://www.infotrack.com.au";
+            var pattern = urlOfInterest;
             foreach (var match in matches)
             {
                 searchDictionary.Add(keyCount, new SearchResultViewModel
