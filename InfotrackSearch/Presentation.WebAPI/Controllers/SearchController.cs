@@ -1,4 +1,6 @@
-﻿using Application.Queries.GetStaticSearchResult;
+﻿using Application.Queries.GetGoogleSearchResult;
+using Application.Queries.GetStaticSearchResult;
+using Application.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,6 +22,13 @@ namespace Presentation.WebAPI.Controllers
 
         [HttpGet]
         public async Task<SearchResponse> GetStaticSearchResult([FromBody]GetStaticSearchResultQuery query)
+        {
+            var response = await Mediator.Send(query);
+            return response;
+        }
+
+        [HttpGet]
+        public async Task<SearchResponse> GetGoogleSearchResult([FromBody] GetGoogleSearchResultQuery query)
         {
             var response = await Mediator.Send(query);
             return response;

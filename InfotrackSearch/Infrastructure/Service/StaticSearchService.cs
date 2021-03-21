@@ -1,9 +1,6 @@
 ﻿using Application.Interface;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 
 namespace Infrastructure
 {

@@ -30,7 +30,9 @@ namespace Presentation.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IStaticSearch, StaticSearch>();
+            services.AddScoped<IGoogleSearch, GoogleSearch>();
             services.AddScoped<IStaticSearchService, StaticSearchService>();
+            services.AddScoped<IGoogleSearchService, GoogleSearchService>();
             services.AddControllers();
             services.AddApplicationLayer();
         }

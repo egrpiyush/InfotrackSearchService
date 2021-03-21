@@ -1,10 +1,8 @@
-﻿using Application.Interface;
-using Application.Queries.GetStaticSearchResult;
-using System;
+﻿using Application.Helper;
+using Application.Interface;
+using Application.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Application.BusinessLogic
 {
@@ -27,7 +25,7 @@ namespace Application.BusinessLogic
                 var result = _service.Search(string.Format(@"https://infotrack-tests.infotrack.com.au/Google/Page{0}.html", pageNumber));
                 if (string.IsNullOrWhiteSpace(result))
                     break;
-                ParseHtml(result.Replace('"', '#'), searchQuery, urlOfInterest, ref keyCount);
+                HtmlParser.ParseHtml(result.Replace('"', '#'), urlOfInterest, ref keyCount, searchDictionary);
             }
 
             var filteredSearchResult = searchDictionary.Where(p => p.Value.IsInfotrack);
@@ -37,20 +35,6 @@ namespace Application.BusinessLogic
                 retVal.Add(searchResult.Key);
             }
             return retVal;
-        }
-
-        private void ParseHtml(string html, string searchQuery, string urlOfInterest, ref int keyCount)
-        {
-            var matches = Regex.Matches(html, @"(<li class=#ads-fr# data-bg=#1#>(.+?)<\/li>|<!--m-->(.+?)<!--n-->)");
-            var pattern = urlOfInterest;
-            foreach (var match in matches)
-            {
-                searchDictionary.Add(keyCount, new SearchResultViewModel
-                {
-                    IsInfotrack = Regex.IsMatch(match.ToString(), pattern)
-                });
-                keyCount++;
-            }
         }
     }
 }

@@ -8,30 +8,30 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Queries.GetStaticSearchResult
+namespace Application.Queries.GetGoogleSearchResult
 {
-    public class GetStaticSearchResultQuery : IRequest<SearchResponse>
+    public class GetGoogleSearchResultQuery : IRequest<SearchResponse>
     {
         public string SearchFor { get; set; }
         public string SearchInUrl { get; set; }
         public string UrlOfInterest { get; set; }
 
-        public class Handler : IRequestHandler<GetStaticSearchResultQuery, SearchResponse>
+        public class Handler : IRequestHandler<GetGoogleSearchResultQuery, SearchResponse>
         {
-            private readonly IStaticSearch _staticSearch;
-            public Handler(IStaticSearch staticSearch)
+            private readonly IGoogleSearch _search;
+            public Handler(IGoogleSearch search)
             {
-                _staticSearch = staticSearch;
+                _search = search;
             }
 
-            public async Task<SearchResponse> Handle(GetStaticSearchResultQuery request, CancellationToken cancellationToken)
+            public async Task<SearchResponse> Handle(GetGoogleSearchResultQuery request, CancellationToken cancellationToken)
             {
                 var response = new SearchResponse();
-                var result = _staticSearch.Search(request.SearchFor, request.UrlOfInterest);
+                var result = _search.Search(request.SearchFor, request.UrlOfInterest);
                 if (result == null || !result.Any())
                     return response;
                 response.FoundAt = string.Join(",", result);
-                response.IsSignificant = result.Max() <= 50 ? true : false;
+                response.IsSignificant = result.Max() <= 50;
                 return response;
             }
         }

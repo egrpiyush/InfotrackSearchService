@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Queries.GetStaticSearchResult
+namespace Application.ViewModel
 {
     public class SearchResultViewModel
     {

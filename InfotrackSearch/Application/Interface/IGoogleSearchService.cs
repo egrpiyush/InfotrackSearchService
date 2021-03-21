@@ -6,6 +6,6 @@ namespace Application.Interface
 {
     public interface IGoogleSearchService
     {
-        string Search(string url);
+        string Search(string searchFor, int pageNumber);
     }
 }
