@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace Presentation.WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class SearchController : ApiControllerBase
     {
         private readonly ILogger<SearchController> _logger;
@@ -20,18 +19,10 @@ namespace Presentation.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<object> Get()
+        public async Task<SearchResponse> GetStaticSearchResult([FromBody]GetStaticSearchResultQuery query)
         {
-            var response = await Mediator.Send(new GetStaticSearchResultQuery { SearchTerm = "Online title search" });
-
-            if (response == null)
-            {
-                return (object)NoContent();
-            }
-
+            var response = await Mediator.Send(query);
             return response;
-
-            return (object)NoContent();
         }
     }
 }
