@@ -1,21 +1,19 @@
+ using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Application;
 using Application.BusinessLogic;
 using Application.Interface;
 using Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Presentation.WebAPI
+namespace Presentation.WebAPIs
 {
     public class Startup
     {
@@ -29,7 +27,7 @@ namespace Presentation.WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(c => c.AddPolicy("CorsAllowAll", ApplicationBuilder =>
+            services.AddCors(c => c.AddPolicy("CorsAllowAll1", ApplicationBuilder =>
             {
                 ApplicationBuilder.AllowAnyOrigin()
                 .AllowAnyMethod()
@@ -52,6 +50,7 @@ namespace Presentation.WebAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("CorsAllowAll1");
 
             app.UseRouting();
 

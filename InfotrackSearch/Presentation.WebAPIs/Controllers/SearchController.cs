@@ -9,9 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Presentation.WebAPI.Controllers
+namespace Presentation.WebAPIs.Controllers
 {
-    [EnableCors("CorsAllowAll")]
     [ApiController]
     public class SearchController : ApiControllerBase
     {
@@ -23,17 +22,13 @@ namespace Presentation.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<SearchResponse> GetStaticSearchResult1()
-        {
-            return null;
-        }
-
-        [HttpGet]
         public async Task<SearchResponse> GetStaticSearchResult(string searchFor, string searchInUrl, string urlOfInterest)
         {
-            var response = await Mediator.Send(new GetStaticSearchResultQuery 
+            var response = await Mediator.Send(new GetStaticSearchResultQuery
             {
-                SearchFor = searchFor, SearchInUrl = searchInUrl, UrlOfInterest = urlOfInterest
+                SearchFor = searchFor,
+                SearchInUrl = searchInUrl,
+                UrlOfInterest = urlOfInterest
             });
             return response;
         }

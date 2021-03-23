@@ -15,3 +15,8 @@
 /InfotrackSearch/Infrastructure.Tests/obj
 /InfotrackSearch/.vs/InfotrackSearchService/v16/TestStore/0
 /InfotrackSearch/.vs/InfotrackSearchService/DesignTimeBuild
+/.vs
+/InfotrackSearch/Common/bin/Debug/netcoreapp3.1
+/InfotrackSearch/Common/obj
+/InfotrackSearch/Presentation.WebAPIs/bin/Debug/netcoreapp3.1
+/InfotrackSearch/Presentation.WebAPIs/obj

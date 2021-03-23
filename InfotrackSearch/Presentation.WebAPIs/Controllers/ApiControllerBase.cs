@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Presentation.WebAPI.Controllers
+
+namespace Presentation.WebAPIs.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public abstract class ApiControllerBase : ControllerBase
     {
         private ISender _mediator;
